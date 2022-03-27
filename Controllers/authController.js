@@ -3,6 +3,7 @@ const Model = require("../Model/userSchema");
 var jwt = require("jsonwebtoken");
 const env = require("dotenv").config();
 
+//signup
 const signup = async (req, res) => {
   const hashPasss = await bcrypt.hash(req.body.password, 10);
   const model = new Model({
@@ -16,6 +17,7 @@ const signup = async (req, res) => {
     .catch((err) => res.send(err.message));
 };
 
+//login
 const loginController = async (req, res) => {
   const user = await Model.find({ name: req.body.name });
   if (user && user.length >= 0) {

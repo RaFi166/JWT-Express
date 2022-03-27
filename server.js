@@ -5,8 +5,7 @@ var mongoose = require("mongoose");
 
 // const bcrypt = require('bcrypt');
 app.use(express.json());
-var jwt = require('jsonwebtoken');
-
+var jwt = require("jsonwebtoken");
 
 //connect mongodb
 const mongoDB = "mongodb://127.0.0.1/jwt";
@@ -17,11 +16,12 @@ mongoose
 
 //home page
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello my friend!");
 });
 
 //auth routes
 app.use("/auth", require("./Routes/auth"));
+app.use("/general", require("./Routes/generalRoutes"));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
